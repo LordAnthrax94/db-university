@@ -1,0 +1,70 @@
+SELECT
+
+SELECT `date_of_birth`
+FROM `students`
+WHERE YEAR(`date_of_birth`) = 1990;
+
+SELECT `cfu`
+FROM `courses`
+WHERE `cfu` > 10;
+
+SELECT `DATE_OF_BIRTH`
+FROM `students`
+WHERE YEAR(`date_of_birth`) < 1995;
+
+SELECT *
+FROM `courses`
+WHERE `year` = 1 AND `period`= 'I semestre';
+
+SELECT *
+FROM `exams`
+WHERE date = '2020-06-20' AND hour > 14;
+
+SELECT *
+FROM `degrees`
+WHERE level = 'magistrale';
+
+SELECT COUNT(*)
+FROM `departments`;
+
+SELECT COUNT(*)
+FROM `teachers`
+WHERE `phone` IS null;
+
+INSERT INTO `students`(degree_id, name, surname, date_of_birth, fiscal_code, enrolment_date, registration_number, email)
+VALUES (33,'Andrea', 'Giannini', '1994-04-10', 'GNNNDR94D10E506V', '2021-02-14', '123456','andreagi1994@gmail.com');
+
+SELECT *
+FROM `students`;
+
+UPDATE `teachers`
+SET `office_number` = 126
+WHERE `name` = 'Pietro' AND `surname` = 'Rizzo';
+
+DELETE FROM `students`
+WHERE `name` = 'Andrea' AND `surname` = 'Giannini';
+
+SELECT *
+FROM `students`;
+
+GROUP
+
+SELECT YEAR(`enrolment_date`) AS year,
+COUNT(*) AS `enrolment_count`
+FROM `students`
+GROUP BY YEAR(`enrolment_date`);
+
+SELECT (`office_address`),
+COUNT(*) AS `teachers_count`
+FROM `teachers`
+GROUP BY (`office_address`);
+
+SELECT (`exam_id`),
+AVG(`vote`) AS `avarage_vote`
+FROM `exam_student`
+GROUP BY (`exam_id`);
+
+SELECT (`department_id`),
+COUNT(*) AS `degree_count`
+FROM `degrees`
+GROUP BY `department_id`;
